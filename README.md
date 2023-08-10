@@ -103,9 +103,9 @@ createAndStoreNFT().catch((error) => {
     console.error('Erreur:', error);
 });
 ```
-ligne 69 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
-ligne 72 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
-ligne 75 `CONTRACT_ADDRESS` est l'adresse de votre contrat ERC-721
+`YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
+`YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
+`CONTRACT_ADDRESS` est l'adresse de votre contrat ERC-721
 
 étape du code ci-dessus:
 
@@ -168,10 +168,10 @@ deployContract().catch(error => {
 });
 ```
 
-ligne 148 `MyNFT.sol` est le nom du fichier de création du contrat\
-ligne 155 et 156 `MyNFT` est le nom du contrat dans le fichier .sol\
-ligne 151 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
-ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille
+`MyNFT.sol` est le nom du fichier de création du contrat\
+`MyNFT` est le nom du contrat dans le fichier .sol\
+`YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
+`YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille
 
 ## Transférer des nfts
 
@@ -223,9 +223,9 @@ transferNFT().catch((error) => {
     console.error('Erreur:', error);
 });
 ```
-ligne 184 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
-ligne 187 `SENDER_PRIVATE_KEY` est la clé privée du portefeuille expéditeur\
-ligne 190 `SENDER_ADDRESS` est l'adresse du portefeuille expéditeur\
-ligne 193 `RECIPIENT_ADDRESS` est l'adresse du portefeuille destinataire\
-ligne 196 `CONTRACT_ADDRESS` est l'adresse du contrat ERC-721\
-ligne 211 `TOKEN_ID` est l'ID du NFT que vous souhaitez transférer
+`YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC (infura par exemple)\
+`SENDER_PRIVATE_KEY` est la clé privée du portefeuille expéditeur\
+`SENDER_ADDRESS` est l'adresse du portefeuille expéditeur\
+`RECIPIENT_ADDRESS` est l'adresse du portefeuille destinataire\
+`CONTRACT_ADDRESS` est l'adresse du contrat ERC-721\
+`TOKEN_ID` est l'ID du NFT que vous souhaitez transférer
