@@ -171,7 +171,7 @@ deployContract().catch(error => {
 ligne 148 `MyNFT.sol` est le nom du fichier de création du contrat\
 ligne 155 et 156 `MyNFT` est le nom du contrat dans le fichier .sol\
 ligne 151 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC\
-ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
+ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille
 
 ## Transférer des nfts
 
