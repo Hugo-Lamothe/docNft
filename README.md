@@ -65,8 +65,8 @@ https://docs.immutable.com/docs/x/zero-to-hero-nft-minting/
 const { ethers } = require('ethers');
 const crypto = require('crypto');
 
-// Configurez votre fournisseur Ethereum (infura.io est utilisé ici)
-const provider = new ethers.providers.JsonRpcProvider('https://rinkeby.infura.io/v3/INFURA_PROJECT_ID');
+
+const provider = new ethers.providers.JsonRpcProvider('YOUR_RPC_URL'); // Remplacez par votre fournisseur RPC
 
 // Votre clé privée pour le portefeuille Ethereum
 const privateKey = 'YOUR_PRIVATE_KEY';
@@ -103,7 +103,7 @@ createAndStoreNFT().catch((error) => {
     console.error('Erreur:', error);
 });
 ```
-
+ligne 69 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC\
 ligne 72 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
 ligne 75 `CONTRACT_ADDRESS` est l'adresse de votre contrat ERC-721
 
@@ -171,7 +171,7 @@ deployContract().catch(error => {
 ligne 148 `MyNFT.sol` est le nom du fichier de création du contrat\
 ligne 155 et 156 `MyNFT` est le nom du contrat dans le fichier .sol\
 ligne 151 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC\
-ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille
+ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
 
 ## Transférer des nfts
 
@@ -180,8 +180,8 @@ ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille
 ```node
 const { ethers } = require('ethers');
 
-// Configurez votre fournisseur Ethereum (infura.io est utilisé ici)
-const provider = new ethers.providers.JsonRpcProvider('https://rinkeby.infura.io/v3/INFURA_PROJECT_ID');
+
+const provider = new ethers.providers.JsonRpcProvider('YOUR_RPC_URL'); // Remplacez par votre fournisseur RPC
 
 // Clé privée du portefeuille expéditeur
 const senderPrivateKey = 'SENDER_PRIVATE_KEY';
@@ -223,7 +223,7 @@ transferNFT().catch((error) => {
     console.error('Erreur:', error);
 });
 ```
-
+ligne 184 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC\
 ligne 187 `SENDER_PRIVATE_KEY` est la clé privée du portefeuille expéditeur\
 ligne 190 `SENDER_ADDRESS` est l'adresse du portefeuille expéditeur\
 ligne 193 `RECIPIENT_ADDRESS` est l'adresse du portefeuille destinataire\
