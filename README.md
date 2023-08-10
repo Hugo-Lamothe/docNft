@@ -55,7 +55,7 @@ console.log('Clé publique:', publicKey);
 
 ## Créer des nfts
 
-### Immutable X:
+### Immutable:
 
 https://docs.immutable.com/docs/x/zero-to-hero-nft-minting/
 
