@@ -138,67 +138,40 @@ contract MyNFT is ERC721, Ownable {
 }
 ```
 
-il faut ensuite déployer le contrat voici le code NodeJS qui permet cela:
+il faut ensuite déployer le contrat et récupérer son ABI voici le code NodeJS qui permet cela:
 
 ```node
 const { ethers } = require('ethers');
-const MyNFT = require('./MyNFT.json'); // Remplacez par le chemin de votre fichier de contrat
+const fs = require('fs');
 
-const privateKey = 'YOUR_PRIVATE_KEY';
-
-// Configurez votre fournisseur Ethereum (infura.io est utilisé ici)
-const provider = new ethers.providers.JsonRpcProvider(`https://rinkeby.infura.io/v3/INFURA_PROJECT_ID`);
-const wallet = new ethers.Wallet(privateKey, provider);
+// Chargez le code source du contrat
+const contractSource = fs.readFileSync('MyNFT.sol', 'utf8');
 
 async function deployContract() {
-  const contractFactory = new ethers.ContractFactory(MyNFT.abi, MyNFT.bytecode, wallet);
-  const contract = await contractFactory.deploy('MyNFT', 'NFT');
+    const provider = new ethers.providers.JsonRpcProvider('YOUR_RPC_URL'); // Remplacez par votre fournisseur RPC
+    const wallet = new ethers.Wallet('YOUR_PRIVATE_KEY', provider); // Remplacez par votre clé privée
 
-  await contract.deployed();
+    // Compilez le contrat
+    const contractFactory = new ethers.ContractFactory(contractSource, ['MyNFT'], wallet);
+    const contract = await contractFactory.deploy('MyNFT', 'NFT');
 
-  console.log('Contract deployed at:', contract.address);
+    await contract.deployed();
+
+    console.log('Contract deployed at:', contract.address);
+
+    // Enregistrez l'ABI dans un fichier
+    fs.writeFileSync('MyNFT.json', JSON.stringify(contract.interface.abi, null, 2));
 }
 
 deployContract().catch(error => {
-  console.error('Error:', error);
+    console.error('Error:', error);
 });
 ```
-ligne 147 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
 
-Dans le code de création de nft nous avions besoin de l'ABI d'un contrat voici le code
-NodeJS qui permet de le générer.
-
-```node
-const solc = require('solc');
-const fs = require('fs');
-
-// Charger le code source du contrat
-const contractSource = fs.readFileSync('MyContract.sol', 'utf8');
-
-// Compiler le contrat
-const input = {
-    language: 'Solidity',
-    sources: {
-        'MyContract.sol': {
-            content: contractSource,
-        },
-    },
-    settings: {
-        outputSelection: {
-            '*': {
-                '*': ['abi'],
-            },
-        },
-    },
-};
-
-const output = JSON.parse(solc.compile(JSON.stringify(input)));
-
-// Obtenir l'ABI
-const abi = output.contracts['MyContract.sol']['MyContract'].abi;
-```
-ligne 176, 182 et 198 `MyContract.sol` est le nom de votre fichier solidity qui créé le contrat\
-ligne 198 `MyContract` est le nom du contrat dans votre code source
+ligne 148 `MyNFT.sol` est le nom du fichier de création du contrat\
+ligne 155 et 156 `MyNFT` est le nom du contrat dans le fichier .sol\
+ligne 151 `YOUR_RPC_URL` est l'url de votre fournisseur Etherum RPC\
+ligne 152 `YOUR_PRIVATE_KEY` est la clé privée de votre portefeuille\
 
 ## Transférer des nfts
 
@@ -251,8 +224,8 @@ transferNFT().catch((error) => {
 });
 ```
 
-ligne 214 `SENDER_PRIVATE_KEY` est la clé privée du portefeuille expéditeur\
-ligne 217 `SENDER_ADDRESS` est l'adresse du portefeuille expéditeur\
-ligne 220 `RECIPIENT_ADDRESS` est l'adresse du portefeuille destinataire\
-ligne 223 `CONTRACT_ADDRESS` est l'adresse du contrat ERC-721\
-ligne 238 `TOKEN_ID` est l'ID du NFT que vous souhaitez transférer
+ligne 187 `SENDER_PRIVATE_KEY` est la clé privée du portefeuille expéditeur\
+ligne 190 `SENDER_ADDRESS` est l'adresse du portefeuille expéditeur\
+ligne 193 `RECIPIENT_ADDRESS` est l'adresse du portefeuille destinataire\
+ligne 196 `CONTRACT_ADDRESS` est l'adresse du contrat ERC-721\
+ligne 211 `TOKEN_ID` est l'ID du NFT que vous souhaitez transférer
